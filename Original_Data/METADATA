@@ -1,0 +1,33 @@
+### METADATA for ABE 651 Final Project "Original data" files ###
+Created by Younghyun Cho <cho215@purdue.edu>
+on May 07, 2014
+
+
+<Description>
+------------------------------------------------------------------------------
+This is the metadata file for ABE 651 Final Project "Original data"
+that are NEXRAD MPE for OHRFC.
+
+* data are included 
+  for "2005-07-26 00:00 to 2005-08-03 23:00" period
+
+
+<Data source>
+------------------------------------------------------------------------------
+NOAA Hydrologic Data System Group (NHDS)
+http://amanzon.nws.noaa.gov/hdsb/data/nexrad/ohrfc_mpe.php
+
+* NEXRAD MPE (Multisensor Precipitation Estimator) data
+  for OHRFC (Ohio River Forecast Center)
+
+
+<Access / download dataes>
+------------------------------------------------------------------------------
+Access and downloaded on April 17, 2014
+* final access dates for radar project
+
+
+<Original citations>
+------------------------------------------------------------------------------
+* Please refer the attached file for details!
+- Description for "xmrg File Format"
