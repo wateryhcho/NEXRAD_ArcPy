@@ -1,0 +1,119 @@
+### METADATA for ABE 651 Final Project 
+    "Processing and Anlysis Steps" files ###
+Created by Younghyun Cho <cho215@purdue.edu>
+on May 07, 2014
+
+
+<Description>
+------------------------------------------------------------------------------
+This is the metadata file for included a set of files and folders
+of ABE 651 Final Project "Processing and Anlysis Steps".
+
+* data are included 
+  for "2005-07-26 00:00 to 2005-08-03 23:00" period
+
+* Each step folder includes the program file 
+  for radar rainfall processing. 
+
+
+<Final Project files; program, input, and output file name or directory>
+------------------------------------------------------------------------------
+step1_conversion (NEXRAD-XMRG format Conversion)
+* program file name: xmrgtoasc.py
+- input directory/file: XMRGFiles/xmrg_MMDDYYYY_HHz
+- output directory/file: XMRGFiles/ascii_MMDDYYYY_HHz.asc
+
+<for "linux_ver">
+* program file name: xmrgtoasc.LINUX.py, xmrgtoasc.CSHELL.csh
+- input directory/file: XMRGFiles/xmrg_MMDDYYYY_HHz
+- output directory/file: ASCIIFiles/ascii_MMDDYYYY_HHz.asc
+- linux command: csh xmrgtoasc.CSHELL.csh ./XMRGFiles ./ASCIIFiles ster
+
+
+step2_georeferencing (Geo-referencing in ArcGIS)
+* program file name: hraptoshg.py
+- input directory/file: HRAPGrid/ascii_MMDDYYYY_HHz.asc
+- output directory/file: SHGGrid/shg_MMDDYYYY_HHz.asc, shg_MMDDYYYY_HHz.prj
+
+
+step3_dss_generation (HEC-DSS file Generation)
+* program file name: asc2dssGrid.exe, asc2dssGrid.bat
+- input directory/file: input/shg_MMDDYYYY_HHz.asc
+- output directory/file: output/xmrg_MMDDYYYY_HHz.dss
+
+
+<File Descriptions>
+------------------------------------------------------------------------------
+## 1st Python script program for NEXRAD Conversion ##
+
+- folder name: step1_conversion
+- program file name: xmrgtoasc.py
+
+>> for execution, need to subdirectory named "XMRGFiles",
+   this folder must contain input files "xmrg_MMDDYYYY_HHz"
+   which need to convert to ASCII file.
+   then, type option (hrap or ster) when starting to run
+   (ster must be selected for next step; geo-referencing)
+
+>> The converted file will be in the same "XMRGFiles" folder.
+
+
+* Linux ver. (included in program_conversion folder; linux_ver)
+- program file name: xmrgtoasc.LINUX.py, xmrgtoasc.CSHELL.csh
+- command for run
+
+>> for execution, need to subdirectory named "XMRGFiles",
+   this folder must contain input files "xmrg_MMDDYYYY_HHz"
+   which need to convert to ASCII file.
+   then, command: csh xmrgtoasc.CSHELL.csh ./XMRGFiles ./ASCIIFiles ster
+   (3rd argument is option; hrap or ster)
+   (ster must be selected for next step; geo-referencing)
+
+>> The converted files will be in the "ASCIIFiles" folder.
+   (output file name: ascii_MMDDYYYY_HHz.asc)
+
+** xmrg_MMDDYYYY_HHz: binary file (can't interpret)
+** ascii_MMDDYYYY_HHz.asc
+: The data contains 5 (hrap) or 6 (ster) row of header information 
+and number of ncols for columns and number of nrows for row 
+space seperated radar data (nodata -9999.0, units: mm)
+
+
+## 2nd Python script program for Georeferencing in ArcGIS ##
+
+- folder name: step2_georeferencing
+- program file name: hraptoshg.py
+
+>> for execution, need to subdirectory named "HRAPGrid" and "SHGGrid",
+   "HRAPGrid" folder must contain input files "ascii_MMDDYYYY_HHz.asc"
+   which is output of previous step and need to convert to SHGGird file.
+   then, run hraptoshg.py program.
+   (it takes quite a time, since multiple geoprocessing will be conducted)
+
+>> The processed files will be in the same "SHGGrid" folder.
+   (output file name: shg_MMDDYYYY_HHz.asc)
+
+** shg_MMDDYYYY_HHz.asc
+: The data contains 6 row of header information 
+and number of ncols for columns and number of nrows for row 
+space seperated radar data (nodata -9999, units: mm)
+
+
+## 3rd program for DSS file generation ##
+
+- folder name: step3_dss_generation
+- program file name: asc2dssGrid.exe, asc2dssGrid.bat
+
+>> for execution, need to subdirectory named "input" and "output",
+   "input" folder must contain input files "shg_MMDDYYYY_HHz.asc"
+   which is output of previous step and need to convert to DSS file.
+   then, run asc2dssGrid.exe program with asc2dssGrid.bat.
+
+>> The processed files will be in the same "output" folder.
+   (output file name: xmrg_MMDDYYYY_HHz.dss)
+
+** xmrg_MMDDYYYY_HHz.dss: binary file (can't interpret)
+   <<This file can be used for HEC-DSS GirdUtil ver.2>>
+
+
+Notice: All required programs and files must be in the working directory!
